@@ -1,0 +1,180 @@
+<!-- <section class="schedule-section spad pt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Event Name</h2>
+                    <p>Organizer Name</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                 
+            </div>
+            <div class="col-4">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 p-2">
+                <div class="card" >
+                    <img class="card-img-top" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-3 p-2">
+                <div class="card" >
+                    <img class="card-img-top" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-3 p-2">
+                <div class="card" >
+                    <img class="card-img-top" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-3 p-2">
+                <div class="card" >
+                    <img class="card-img-top" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-3 p-2">
+                <div class="card" >
+                    <img class="card-img-top" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-3 p-2">
+                <div class="card" >
+                    <img class="card-img-top" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Book</a>
+                      
+                    </div>
+                  </div>
+            </div>
+        </div>
+        
+    </div>
+</section> -->
+
+<div class="container" *ngIf ="eventData$ | async as eventData">
+    <div class="row mt-3">
+        <div class="col-md-8">
+                <img class="card-img-top" [src]="eventData.imageUrl" alt="Card image cap">
+          <div class="row mt-3">
+                <div class="col-md-10">
+                    <h2>Event name : {{eventData.eventName}}</h2>
+                    <p>orgnizar name : {{eventData.organizerName}}</p>
+                </div>
+                <div class="col-md-2"><a (click)="openModal()" class="btn btn-primary">Book Now</a></div>
+          </div>
+          <div class="row">
+                <div class="col-md-6">
+                   <h5>Start time : {{eventData.startTime}}</h5>
+                </div>
+                <div class="col-md-6 ">
+                    <h5>End time : {{eventData.endDate | date :'dd-yyyy'}}</h5>
+                    <p>Location :{{eventData.location}}</p>
+                </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+           <div *ngFor="let item of events$ | async">
+                <div class="card" >
+                        <img class="card-img-top" [src]="item.imageUrl"appHideImg alt="Card image cap">
+                        <div class="card-body">
+                          
+                          <a [routerLink]="['/event',item.eventId]" class="btn btn-primary">Book</a>
+                        </div>
+                      </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal" #model>
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">BOOK TICKET</h4>
+              <button type="button" class="btn-close" (click)="closeModel()"></button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+               <div class="row">
+                   <div class="col-md-12">
+                       <table class="table">
+                           <thead>
+                               <tr>
+                                   <td><input type="text" name="Name" [(ngModel)]="member.Name" class="form-control" placeholder="Name"></td>
+                                   <td style=" width: 9%;"><input type="text"  name="Age" [(ngModel)]="member.Age" class="form-control" placeholder="Age"></td>
+                                   <td>
+                                       <select class="form-control" name="IdentityCard" [(ngModel)]="member.IdentityCard">
+                                           <option value="Select proof">Select proof</option>
+                                           <option value="adhar card">Adhar Card</option>
+                                           <option value="pan card">PAN Card</option>
+                                       </select>
+                                   </td>
+                                   <td><input type="text" name="CardNo" [(ngModel)]="member.CardNo" class="form-control" placeholder="car No"></td>
+                                   <td><input type="text" name="ContactNo" [(ngModel)]="member.ContactNo" class="form-control" placeholder="Mobile No"></td>
+                                   <td><button class="btn btn-sm btn-primary" (click)="addMember()" >Add</button></td>
+
+                               </tr>
+                           </thead>
+                            <tbody>
+                                <tr *ngFor="let item of bookingobj.EventBookingMembers">
+                                    <td>{{item.Name}}</td>
+                                    <td>{{item.Age}}</td>
+                                    <td>{{item.IdentityCard}}</td>
+                                    <td>{{item.CardNo}}</td>
+                                    <td colspan="2">{{item.ContactNo}}</td>
+                                </tr>
+                            </tbody>
+
+
+
+
+
+                       </table>
+                   </div>
+               </div>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closeModel()">Cancle</button>
+                <button type="button" class="btn btn-success" (click)="onBookingEvent()" >Book Ticket</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>

@@ -1,7 +1,3 @@
-.active{
-    background: #7a1354;
-    border-radius: 5px;
-}
 .fade.modal {
     opacity: unset !important;
  }

@@ -1,0 +1,34 @@
+<div class="container">
+
+    <div class="row">
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <td>eventName</td>
+                    <td>startDate</td>
+                    <td>startTime</td>
+                    <td>bookingId</td>
+                    <td>endDate</td>
+                    <td>organizerName</td>
+                    <td>organizerId</td>
+                    <td>bookingNo</td>
+                    <td>noOfTickets</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let item of bookingList">
+                    <td>{{item.eventName}}</td>
+                    <td>{{item.startDate | date:'dd-mm-yyyy'}}</td>
+                    <td>{{item.startTime}}</td>
+                    <td>{{item.bookingId}}</td>
+                    <td>{{item.endDate| date:'dd-mm-yyyy'}}</td>
+                    <td>{{item.organizerName}}</td>
+                    <td>{{item.organizerId}}</td>
+                    <td>{{item.bookingNo}}</td>
+                    <td>{{item.noOfTickets}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

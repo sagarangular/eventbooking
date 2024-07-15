@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3 p-2" *ngFor="let item of eventList">
+            <div class="card" >
+                <img class="card-img-top" [src] = "item.imageUrl" appHideImg alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.eventName}}</h5>
+                  <p class="card-text">{{item.organizerName}}</p>
+                  <a [routerLink]="['/event',item.eventId]" class="btn btn-primary">Book</a>
+                </div>
+              </div>
+        </div>
+</div>
